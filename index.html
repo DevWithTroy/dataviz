@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="bamx">
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/custom/main.css">
+	<link rel="stylesheet" type="text/css" href="css/vendor/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/vendor/c3.css">
+</head>
+<body>
+
+<body ng-controller="bamxController">
+	
+	<header>
+		<img id="logo" src="img/logo.png">
+		<button type="button" class="btn btn-default" id="auth">Logout</button>
+	</header>
+
+	<span>
+		<p class="title">Hi, Caroline. | <strong>Budget:</strong> {{client.budget | currency}} | <strong>Spend:</strong> <input type="text" ng-model="spend"></p>
+		<span id="warning" ng-show=" spend > 50000"><h4>WARNING:</h4> You're over budget.</span>
+	</span>
+
+	<!-- CREATE METRICS DIRECTIVE -->
+	<section id="metrics">
+		<ul>
+			<li>
+				<h3>Impressions</h3>
+				<p>{{client.impressions}}</p>
+			</li>
+			<li>
+				<h3>Clicks</h3>
+				<p>{{client.clicks}}</p>
+			</li>
+			<li>
+				<h3>CTR</h3>
+				<p>{{client.ctr | percentage}}</p>
+			</li>
+			<li>
+				<h3>CPC</h3>
+				<p>{{client.cpc | currency}}</p>
+			</li>
+			<li>
+				<h3>Impression Share</h3>
+				<p>{{client.share | percentage}}</p>
+			</li>
+		</ul>
+	</section>
+
+	<section id="chart">
+	</section>
+
+	<analytics ></analytics>
+	<p id="guide"><strong>CLICK:</strong> Show/Hide retailer data. | <strong>HOVER:</strong> Focus on retailer's data.</p>
+
+	<!-- VENDOR JS -->
+	<script src="js/vendor/angular.js"></script>
+	<script src="js/vendor/jquery.js"></script>	
+	<script src="js/vendor/d3.js"></script>
+	<script src="js/vendor/c3.js"></script>	
+
+	<!-- APP JS -->
+	<script src="js/dashboard.js"></script>
+	<script src="js/services/backend.services.js"></script>
+	<script src="js/directives/c3.directives.js"></script>
+
+</body>
+</html>
